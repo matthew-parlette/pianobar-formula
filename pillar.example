@@ -1,3 +1,7 @@
-template:
-  lookup:
-    master: template-master
+pianobar:
+  matt:
+    config:
+      user: email@address.com
+      password: pandora-password
+      fifo: /home/matt/.config/pianobar/ctl
+      event_command: /home/matt/.i3/scripts/pianobar-song-i3.sh
