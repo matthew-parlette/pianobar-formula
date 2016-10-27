@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-{% from "template/map.jinja" import template with context %}
+{% from "pianobar/map.jinja" import pianobar with context %}
 
-template-config:
+{%- for user in salt['pillar.get']('pianobar', {}).keys() %}
+pianobar-config-{{ user }}:
   file.managed:
-    - name: {{ template.config }}
-    - source: salt://template/files/example.tmpl
-    - mode: 644
-    - user: root
-    - group: root
+    - name: {{ pianobar.config|replace('~', '/home/' + user) }}
+    - mode: 640
+    - user: {{ user }}
+    - group: {{ user }}
+    - makedirs: True
+    - contents:
+      {%- for key, value in salt['pillar.get']('pianobar:' + user + ':config', {}).iteritems() %}
+      - {{ key }} = {{ value }}
+      {%- endfor %}
+{%- endfor %}

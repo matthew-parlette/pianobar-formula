@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-{% from "template/map.jinja" import template with context %}
+{% from "pianobar/map.jinja" import pianobar with context %}
 
-template-pkg:
+pianobar-pkg:
   pkg.installed:
-    - name: {{ template.pkg }}
+    - name: {{ pianobar.pkg }}
