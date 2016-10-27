@@ -1,5 +1,5 @@
 ================
-template-formula
+pianobar-formula
 ================
 
 A saltstack formula that is empty. It has dummy content to help with a quick
@@ -7,8 +7,8 @@ start on a new formula.
 
 .. note::
 
-    See the full `Salt Formulas installation and usage instructions
-    <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_.
+    See the official pianobar repository at
+    <https://github.com/PromyLOPh/pianobar>`_.
 
 Available states
 ================
@@ -16,7 +16,22 @@ Available states
 .. contents::
     :local:
 
-``template``
+``pianobar``
 ------------
 
-Installs the template package, and starts the associated template service.
+Installs the pianobar package, config file, and fifo file.
+
+``pianobar.install``
+--------------------
+
+Install the pianobar package.
+
+``pianobar.config``
+-------------------
+
+Setup the pianobar config from pillar data.
+
+``pianobar.fifo``
+-----------------
+
+Create the pianobar fifo file for remote control.
